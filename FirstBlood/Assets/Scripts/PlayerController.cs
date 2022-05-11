@@ -45,4 +45,12 @@ public class PlayerController : MonoBehaviour {
 
         playerCamera.transform.localRotation = Quaternion.Euler(cameraRotation, 0.0f, 0.0f);
     }
+
+    void LateUpdate() {
+        RaycastHit hit;
+        Debug.DrawRay(playerCamera.transform.position, transform.forward*10.0f, Color.magenta);
+        if(Physics.Raycast(playerCamera.transform.position, transform.forward, out hit, 10.0f)) {
+            Debug.Log(hit.collider.name);
+        }
+    }
 }
